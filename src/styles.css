@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -9,6 +9,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+html, body, #app {
+  height: 100%;
+  margin: 0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,21 +28,33 @@
   grid-template-columns: 400px calc(100% - 400px);
 }
 
-.left-list {
-  height: 100vh;
-  overflow-y: auto;
-}
-
-.left-list .list-group-item {
-  overflow: hidden;
-}
-
-.right-panel {
-  height: 100vh;
-  padding: 10px;
-}
-
 .current-project-description {
-  height: calc(100vh - 20px);
+  height: 100%;
   overflow-y: auto;
+}
+
+.left-list_content-scroll {
+  overflow-y: auto;
+  height: 100%;
+}
+
+.splitpanes__pane {
+  /*
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  */
+  /*box-shadow: 0 0 3px rgba(0, 0, 0, .2) inset;*/
+  background: white !important;
+}
+
+.splitpanes__splitter {
+  background:rgba(0, 0, 0, 0.1) !important;
+}
+
+.left-pane {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
