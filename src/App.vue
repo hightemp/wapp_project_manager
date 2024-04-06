@@ -5,7 +5,7 @@ import { onMounted, ref, computed } from "vue"
 import { get_settings, get_projects_list } from "./lib/api"
 import { IProjects } from "./types/Project"
 import { ISettings } from "./types/Settings"
-import * as showdown  from "showdown"
+import { convertMarkdownToHTML } from './lib/markdown_converter';
 
 var settings = ref<ISettings>(<any>{});
 var projects = ref<IProjects>([]);
@@ -30,12 +30,6 @@ const selected_project_class = computed(() => {
     return index === selected_project_index.value ? 'active' : '';
   };
 });
-
-function convertMarkdownToHTML(text: string) {
-  var converter = new showdown.Converter(),
-    html = converter.makeHtml(text);
-  return html;
-}
 
 const selected_project_description = computed(() => {
   if (projects.value[selected_project_index.value]) {
@@ -71,3 +65,11 @@ const selected_project_description = computed(() => {
   </div>
 </template>
 
+
+function convertMarkdownToHTML(markdown: any) {
+  throw new Error("Function not implemented.")
+}
+
+function convertMarkdownToHTML(markdown: any) {
+  throw new Error("Function not implemented.");
+}

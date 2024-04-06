@@ -20,7 +20,7 @@
 .main {
   height: 100vh;
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 400px calc(100% - 400px);
 }
 
 .left-list {

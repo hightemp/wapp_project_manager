@@ -148,7 +148,7 @@ fn get_projects_list() -> Result<ProjectsList, String> {
 fn main() {
     *SETTINGS.lock().unwrap() = load_settings();
 
-    update_projects_list();
+    update_projects_list().expect("scan projects error");
 
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
