@@ -19,6 +19,7 @@ struct Settings {
 #[derive(Debug, Serialize, Deserialize, Clone)]
 struct Project {
     title: String,
+    name: String,
     short_description: String,
     path: String,
     markdown: String,
@@ -63,6 +64,7 @@ fn scan_readme_file(file_path: PathBuf, project_path: &PathBuf) -> Result<Projec
         
         let project = Project {
             title,
+            name: String::from(project_path.file_name().unwrap().to_str().unwrap()),
             short_description,
             path: String::from(project_path.to_str().unwrap()),
             markdown: file_content,
@@ -97,7 +99,8 @@ fn scan_dir_for_readme(input_path: PathBuf) -> Result<Project, String> {
 
     let input_path_name = String::from((&input_path).file_name().unwrap().to_str().unwrap());
     return Ok(Project { 
-        title: input_path_name, 
+        title: input_path_name.clone(), 
+        name: input_path_name.clone(),
         short_description: String::from(""), 
         path: String::from(input_path.to_str().unwrap()),
         markdown: String::from(""), 

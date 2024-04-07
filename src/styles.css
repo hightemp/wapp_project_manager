@@ -11,7 +11,7 @@
   -webkit-text-size-adjust: 100%;
 }
 
-html, body, #app {
+html, body, #app, main {
   height: 100%;
   margin: 0;
 }
@@ -20,12 +20,6 @@ html, body, #app {
   :root {
 
   }
-}
-
-.main {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 400px calc(100% - 400px);
 }
 
 .current-project-description {
@@ -38,23 +32,48 @@ html, body, #app {
   height: 100%;
 }
 
-.splitpanes__pane {
-  /*
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  */
-  /*box-shadow: 0 0 3px rgba(0, 0, 0, .2) inset;*/
-  background: white !important;
-}
-
-.splitpanes__splitter {
-  background:rgba(0, 0, 0, 0.1) !important;
+.list_wrapper {
+  height: 100%;
+  overflow-y: auto;
+  flex: 1 1 0;
 }
 
 .left-pane {
   height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+.left-pane_wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.toolbar-left {
+  width: 40px;
+  flex: 0 0 auto;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.left-pane_panel {
+  flex: 1 0 0;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.left {
+  flex: 0 0 auto;
+  width: 400px;
+}
+
+.right {
+  flex: 1 1 0;
 }

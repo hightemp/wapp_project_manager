@@ -1,6 +1,7 @@
 
 export interface IProject {
     title: string
+    name: string
     short_description: string
     path: string
     markdown: string

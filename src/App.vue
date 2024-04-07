@@ -7,9 +7,6 @@ import { IProjects } from "./types/Project"
 import { ISettings } from "./types/Settings"
 import { convertMarkdownToHTML } from './lib/markdown_converter';
 
-import { Splitpanes, Pane } from 'splitpanes'
-import 'splitpanes/dist/splitpanes.css'
-
 var settings = ref<ISettings>(<any>{});
 var projects = ref<IProjects>([]);
 var selected_project_index = ref<number>(-1)
@@ -43,69 +40,66 @@ const selected_project_description = computed(() => {
 </script>
 
 <template>
-  <v-app>
-    
-    <v-app-bar app >    
-      
-    </v-app-bar>
-    
-    <v-main>
-      <splitpanes class="default-theme">
-        <pane width="20" min-size="20" max-size="40">
+  <div class="main">
+        <div class="left">
           <div class="left-pane">
-            <v-toolbar
-              dense
-              floating
-            >
-              <v-text-field
-                hide-details
-                single-line
-              ></v-text-field>
-
-              <v-btn icon>
-                <v-icon>mdi-dots-vertical</v-icon>
-              </v-btn>
-            </v-toolbar>
-            <div style="height:100%;overflow-y: scroll;">
-              <v-list lines="two">
-                <v-list-item
-                  v-for="(project, index) in projects"
-                  :key="index"
-                  :subtitle="project.path"
-                  :title="project.title"
-                  :active="selected_project_class(index)"
-                  @click="selectProject(index)"
+            <div class="left-pane_wrapper">
+              <div class="toolbar-left">
+                  
+              </div>
+              <div class="left-pane_panel">
+                <v-toolbar
+                  dense
+                  floating
                 >
-                  <template v-slot:prepend>
-                    <v-avatar color="grey-lighten-1">
-                      <v-icon color="white">mdi-folder</v-icon>
-                    </v-avatar>
-                  </template>
+                  <v-text-field
+                    hide-details
+                    single-line
+                  ></v-text-field>
 
-                  <!--template v-slot:append>
-                    <v-btn
-                      color="grey-lighten-1"
-                      icon="mdi-information"
-                      variant="text"
-                    ></v-btn>
-                  </template-->
-                </v-list-item>
-              </v-list>
+                  <v-btn icon>
+                    <v-icon>mdi-dots-vertical</v-icon>
+                  </v-btn>
+                </v-toolbar>
+                <div class="list_wrapper">
+                  <v-list lines="two">
+                    <v-list-item
+                      v-for="(project, index) in projects"
+                      :key="index"
+                      :subtitle="project.title"
+                      :title="project.name"
+                      :active="selected_project_class(index)"
+                      @click="selectProject(index)"
+                    >
+                      <template v-slot:prepend>
+                        <v-avatar color="grey-lighten-1">
+                          <v-icon color="white">mdi-folder</v-icon>
+                        </v-avatar>
+                      </template>
+
+                      <!--template v-slot:append>
+                        <v-btn
+                          color="grey-lighten-1"
+                          icon="mdi-information"
+                          variant="text"
+                        ></v-btn>
+                      </template-->
+                    </v-list-item>
+                  </v-list>
+                </div>
+              </div>
             </div>
           </div>
-        </pane>
-        <pane>
+        </div>
+        <div class="right">
           <iframe
             :srcdoc="selected_project_description"
             frameborder="0"
             width="100%"
             height="100%"
           ></iframe>
-        </pane>
-      </splitpanes>
-    </v-main>
-    
-  </v-app>
+        </div>
+  </div>
           <!--
   <div class="main">
     <div class="left-list">
